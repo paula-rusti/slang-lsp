@@ -1,0 +1,6 @@
+{
+  "name": "SystemVerilog",
+  "scopeName": "source.systemverilog",
+  "fileTypes": ["sv", "svh"],
+  "patterns": []
+}

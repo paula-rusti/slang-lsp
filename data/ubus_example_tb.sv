@@ -66,6 +66,7 @@ class ubus_example_tb extends uvm_env;
   endfunction : connect_phase
 
   function void end_of_elaboration_phase(uvm_phase phase);
+    int result = undefined_variable + 1; 
     // Set up slave address map for ubus0 (basic default)
     ubus0.set_slave_address_map("slaves[0]", 0, 16'hffff);
   endfunction : end_of_elaboration_phase

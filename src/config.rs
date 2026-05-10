@@ -26,8 +26,25 @@ pub fn read_config(workspace_root: &str, uvm_src: Option<String>) -> Compilation
     let mut extra_files  = vec![];
 
     if let Some(ref uvm) = uvm_src {
-        include_dirs.push(uvm.clone());
-        extra_files.push(format!("{}/uvm_macros.svh", uvm));
+        let candidates = if Path::new(uvm).is_absolute() {
+            vec![PathBuf::from(uvm)]
+        } else {
+            // Try: root/uvm  (e.g. root already includes data/)
+            // Try: root/data/uvm  (e.g. root is project root, uvm is under data/)
+            vec![
+                root.join(uvm),
+                root.join("data").join(uvm),
+            ]
+        };
+
+        let uvm_path = candidates
+            .into_iter()
+            .find(|p| p.exists())
+            .unwrap_or_else(|| root.join(uvm));
+
+        let uvm_str = uvm_path.to_string_lossy().into_owned();
+        include_dirs.push(uvm_str.clone());
+        extra_files.push(format!("{}/uvm_macros.svh", uvm_str));
     }
 
     let default_context = ResolutionContext {

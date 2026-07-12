@@ -1,3 +1,4 @@
 /target
-/sv-lsp-client/node_modules
+/server/target
+/vsc_client/node_modules
 /.pi

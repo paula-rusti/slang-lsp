@@ -8,7 +8,7 @@ function activate(context) {
     const outputChannel = vscode.window.createOutputChannel('SV LSP');
     outputChannel.appendLine('SV LSP: activating...');
 
-    const serverPath = path.join(__dirname, '..', 'target', 'release', 'LspServer');
+    const serverPath = path.join(__dirname, '..', 'server', 'target', 'release', 'LspServer');
     outputChannel.appendLine('server path: ' + serverPath);
 
     const serverOptions = {

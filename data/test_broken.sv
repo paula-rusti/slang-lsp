@@ -1,1 +1,1 @@
-class foo; endclass
+class foo endclass

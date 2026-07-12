@@ -9,15 +9,12 @@ Powered by [`slang`](https://github.com/MikePopoloski/slang)
 The LSP server invokes `slang` as a subprocess for linting. Install it so it's available on your `PATH`:
 
 ```bash
-# macOS (Homebrew)
-brew install slang
 
-# Or build from source:
 git clone https://github.com/MikePopoloski/slang.git
 cd slang
 cmake -B build
 cmake --build build -j
-# The binary is at build/bin/slang — add it to your PATH or symlink it into /usr/local/bin
+# The binary is at build/bin/slang - add it to your PATH or symlink it into /usr/local/bin
 ```
 
 Verify it's working:
